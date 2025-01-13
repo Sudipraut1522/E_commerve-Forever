@@ -7,7 +7,11 @@ import CartTotal from '../components/CartTotal';
 
 const Cart = () => {
   const { products, currency, cartItems, updateQuantity, navigate  } = useContext(ShopContext);
+
+  
   const [cartData, setCartData] = useState([]);
+
+  console.log(cartData,"dasdg")
 
   useEffect(() => {
     const tempData = [];
@@ -22,7 +26,8 @@ const Cart = () => {
         }
       }
     }
-    setCartData(tempData);
+    console.log(tempData);
+  return  setCartData(tempData);
 
   }, [cartItems]);  
 
@@ -34,7 +39,9 @@ const Cart = () => {
       <div>
         {cartData.map((item, index) => {
         
-          const productData = products.find((product) => product.id === item._id);
+          const productData = products.find((product) => product._id === item._id);
+
+          console.log(productData,"productData")
 
           if (!productData) {
             return null; 
