@@ -6,8 +6,9 @@ import { assets } from "../assets/assets";
 const Product = () => {
   const { productId } = useParams();
 
-  const { products, currency } = useContext(ShopContext);
-  console.log("products", products);
+  const { products, currency, addToCart } = useContext(ShopContext);
+
+  console.log(products, "products");
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState("");
   const [size, setSize] = useState("");
@@ -17,7 +18,7 @@ const Product = () => {
       if (items._id === productId) {
         setProductData(items);
         setImage(items.image[0]);
-        console.log(items);
+
         return null;
       }
     });
@@ -29,7 +30,6 @@ const Product = () => {
 
   return productData ? (
     <div className="border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100 ">
-      {/*Product dara */}
       <div className="flex gap-12 flex-col sm:flex-row">
         <div className="flex-1 flex flex-col-reserve gap-3 sm:flex-row">
           <div className="flex sm:flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18.7%] w-full">
@@ -83,7 +83,10 @@ const Product = () => {
               ))}
             </div>
             <div>
-              <button className="py-3 px-8 bg-black  text-center text-white text-sm active:bg-gray-700">
+              <button
+                className="py-3 px-8 bg-black  text-center text-white text-sm active:bg-gray-700"
+                onClick={() => addToCart({ productData, size: size })}
+              >
                 Add To Cart
               </button>
               <hr className="mt-8 sm:w-4/5" />
