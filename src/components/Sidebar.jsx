@@ -11,6 +11,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaQuestion } from "react-icons/fa6";
 import { MdOutlinePolicy } from "react-icons/md";
+import { assets } from "../assets/assets";
 
 const navItems = {
   admin: [
@@ -57,9 +58,9 @@ const Sidebar = ({
         {/* Logo and collapse */}
         <div className="flex h-16 items-center justify-between pl-4  border-b border-border">
           <Link to={""} className="flex items-center ">
-            <img src={""} alt="B&B logo" className="h-10 w-10" />
+            <img src={assets?.logo} alt="LogoImage" className="w-40" />
 
-            {!collapsed && <span className="text-xl font-bold">Pacs</span>}
+            {!collapsed && <span className="text-xl font-bold"></span>}
           </Link>
 
           <button className="" onClick={() => setCollapsed(!collapsed)}>
@@ -71,7 +72,7 @@ const Sidebar = ({
           </button>
         </div>
         {/* Navigation */}
-        <nav className="flex-1 overflow-y-auto p-4">
+        <nav className="flex-1 overflow-y-auto p-4 ">
           <ul className="space-y-2">
             {navItems?.admin?.map((item, index) => (
               <li key={index} onClick={() => setMobileOpen(false)}>
@@ -82,7 +83,7 @@ const Sidebar = ({
                       isActive === item?.path ||
                       (item?.path === "/patients" &&
                         isActive.startsWith("/patient-detail"))
-                        ? "bg-primary text-white"
+                        ? "bg-gray-600 text-white"
                         : "text-muted-foreground hover:bg-muted"
                     }
                     ${collapsed ? "justify-center" : "justify-start"}`}

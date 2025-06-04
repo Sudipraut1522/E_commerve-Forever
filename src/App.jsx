@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Collection from "./pages/Collection";
 import About from "./pages/About";
@@ -34,7 +34,19 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/table" element={<Table />} />
         </Route>
-        {/* <Route path="/dashboard" element={<DashboardLayout />} /> */}
+        <Route element={<DashboardLayout />}>
+          <Route path="/dashboard" element={<Home />} />
+          <Route path="/patients" element={<Collection />} />
+          <Route path="/reports" element={<About />} />
+          <Route path="/sms" element={<Contact />} />
+          <Route path="/staff" element={<Product />} />
+          <Route path="/privacy-policy" element={<Cart />} />
+          <Route path="/faq" element={<PlaceOrder />} />
+          <Route path="/settingsder" element={<Orders />} />
+        </Route>
+        <Route path="/admin" element={<Login />} />
+
+        <Route path="*" element={<Login />} />
       </Routes>
     </div>
   );

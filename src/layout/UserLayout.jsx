@@ -24,7 +24,6 @@ const UserLayout = () => {
       >
         <div className="">
           <Search />
-
           <Outlet />
         </div>
         <Footer />
